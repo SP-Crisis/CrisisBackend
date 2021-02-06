@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'CrisisManagementSystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vdjdsyqy',
+        'USER': 'vdjdsyqy',
+        'PASSWORD': 'SNO5BO-ZjwbUU7yR76ptig6V58z_6GMe',
+        'HOST': 'ziggy.db.elephantsql.com', 
+        'PORT': '5432',
     }
 }
 
