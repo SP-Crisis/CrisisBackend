@@ -7,16 +7,16 @@ from .models import Question
 def index(request):
     return HttpResponse("Main Login")
 
-def dashboard(request): 
+def dashboard(request):
     return HttpResponse("Dashboard")
 
-def allQuestions(request): 
+def allQuestions(request):
     questions = Question.objects.all()
     return HttpResponse(questions)
 
 def questions(request, question_id):
     question = Question.objects.get(pk=question_id)
-    
+
     return HttpResponse(question.question)
 
 def search(request):
@@ -24,3 +24,6 @@ def search(request):
 
 def rank(request):
     return HttpResponse("Ranking Here")
+
+def policies(request):
+    return HttpResponse("Policies")
