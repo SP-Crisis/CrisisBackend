@@ -8,6 +8,7 @@ class Question(models.Model):
     def __str__(self):
         return self.question
 
+<<<<<<< HEAD
 class Answers(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.CharField(max_length=500)
@@ -15,6 +16,8 @@ class Answers(models.Model):
     def __str__(self):
         return self.answer
         
+=======
+>>>>>>> 31d4d617c925850dd3bb4e7708775d00fd25ef66
 class Policies(models.Model):
     levels = models.TextChoices('Level', 'SCHOOL STATE FEDERAL')
     policy = models.CharField(max_length=500)
@@ -23,3 +26,8 @@ class Policies(models.Model):
     options = levels.choices, max_length=10)
      def __str__(self):
         return self.policy
+<<<<<<< HEAD
+=======
+
+    
+>>>>>>> 31d4d617c925850dd3bb4e7708775d00fd25ef66
