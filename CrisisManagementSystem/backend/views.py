@@ -7,7 +7,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-<<<<<<< HEAD
 @api_view(['GET'])
 def index(request):
     api_urls = {
@@ -21,12 +20,6 @@ def index(request):
 
 @api_view(['GET'])
 def list(request):
-=======
-def dashboard(request):
-    return HttpResponse("Dashboard")
-
-def allQuestions(request):
->>>>>>> be-PoliciesModel
     questions = Question.objects.all()
     serializer = QuestionSerializer(questions, many=True)
     return Response(serializer.data)
@@ -37,13 +30,6 @@ def detail(request, pk):
     serializer = QuestionSerializer(question, many=False)
     return Response(serializer.data)
 
-<<<<<<< HEAD
-=======
-def questions(request, question_id):
-    question = Question.objects.get(pk=question_id)
-
-    return HttpResponse(question.question)
->>>>>>> be-PoliciesModel
 
 @api_view(['POST'])
 def create(request):
@@ -51,12 +37,3 @@ def create(request):
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
-
-<<<<<<< HEAD
-=======
-def rank(request):
-    return HttpResponse("Ranking Here")
-
-def policies(request):
-    return HttpResponse("Policies")
->>>>>>> be-PoliciesModel
