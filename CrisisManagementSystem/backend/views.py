@@ -1,26 +1,39 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Question, Answers
+from .serializers import QuestionSerializer
 
-from .models import Question
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-# Create your views here.
+
+@api_view(['GET'])
 def index(request):
-    return HttpResponse("Main Login")
+    api_urls = {
+        'List': '/list/',
+        'Detail': '/question-detail/<str:pk>/',
+        'Create': '/question-create/',
+        'Update': '/question-update/<str:pk>/',
+        'Delete': '/question-delete/<str:pk>/'
+    }
+    return Response(api_urls)
 
-def dashboard(request): 
-    return HttpResponse("Dashboard")
-
-def allQuestions(request): 
+@api_view(['GET'])
+def list(request):
     questions = Question.objects.all()
-    return HttpResponse(questions)
+    serializer = QuestionSerializer(questions, many=True)
+    return Response(serializer.data)
 
-def questions(request, question_id):
-    question = Question.objects.get(pk=question_id)
-    
-    return HttpResponse(question.question)
+@api_view(['GET'])
+def detail(request, pk):
+    question = Question.objects.get(id=pk)
+    serializer = QuestionSerializer(question, many=False)
+    return Response(serializer.data)
 
-def search(request):
-    return HttpResponse("Search")
 
-def rank(request):
-    return HttpResponse("Ranking Here")
+@api_view(['POST'])
+def create(request):
+    serializer = QuestionSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
