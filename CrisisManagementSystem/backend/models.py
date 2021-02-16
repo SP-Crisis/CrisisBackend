@@ -39,6 +39,7 @@ class Technologies(models.Model):
         return self.technology
 
 class Operations(models.Model):
+    date = models.DateTimeField('Hours of Operation')
     operation = models.CharField(max_length=500)
     def __str__(self):
         return self.operation
