@@ -8,6 +8,7 @@ class User(AbstractUser):
     pass
 
 class Question(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     date = models.DateTimeField('Date Asked')
     rank = models.IntegerField(default=0)
     question = models.CharField(max_length=500)
@@ -15,6 +16,7 @@ class Question(models.Model):
         return self.question
 
 class Answers(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.CharField(max_length=500)
     rank = models.IntegerField(default=0)
