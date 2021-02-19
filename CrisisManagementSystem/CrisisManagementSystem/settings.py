@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'core.User'
+
 
 # Application definition
 
@@ -81,7 +83,7 @@ DATABASES = {
         'NAME': 'vdjdsyqy',
         'USER': 'vdjdsyqy',
         'PASSWORD': 'SNO5BO-ZjwbUU7yR76ptig6V58z_6GMe',
-        'HOST': 'ziggy.db.elephantsql.com', 
+        'HOST': 'ziggy.db.elephantsql.com',
         'PORT': '5432',
     }
 }
