@@ -7,3 +7,5 @@ from .models import Question, Answers
 admin.site.register(User, UserAdmin)
 admin.site.register(Question)
 admin.site.register(Answers)
+
+#New Comment

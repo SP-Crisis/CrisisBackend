@@ -10,9 +10,6 @@ from .serializers import QuestionSerializer, AnswerSerializer
 from rest_framework import viewsets
 
 
-
-
-
 #Just a placeholder for how I think these views would work. Need to convert to the other style of views (@api_view)
 class RegisterView(FormView):
 
@@ -73,4 +70,4 @@ class QuestionViewSet(viewsets.ModelViewSet):
 
 class AnswerViewSet(viewsets.ModelViewSet):
     queryset = Answers.objects.all()
-    serializer_class = AnswerSerialize
+    serializer_class = AnswerSerializer
