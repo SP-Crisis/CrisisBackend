@@ -1,1 +1,1 @@
-# Crisis-Managment-System
+# Crisis-Management-System
