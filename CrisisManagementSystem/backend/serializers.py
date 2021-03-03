@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Question, Answers
+from .models import Question, Answers, Policies, Technologies, Operations, Health
 
 #Serializers
 ## Main Serial
 
 class QuestionSerializer(serializers.ModelSerializer):
-    class Meta: 
+    class Meta:
         model = Question
         fields = '__all__'
 

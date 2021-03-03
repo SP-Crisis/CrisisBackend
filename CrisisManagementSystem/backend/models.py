@@ -1,6 +1,5 @@
 from django.db import models
 import datetime
-from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -19,18 +18,16 @@ class Answers(models.Model):
         return self.answer
 
 class Policies(models.Model):
-    levels = models.TextChoices('Level', 'SCHOOL STATE FEDERAL')
+    level = models.CharField(max_length=10)
     policy = models.CharField(max_length=500)
     date = models.DateTimeField('Last Updated')
-    level = models.CharField(blank=True, options = levels.choices, max_length=10)
     def __str__(self):
         return self.policy
 
 class Technologies(models.Model):
-    types = models.TextChoices('Type', 'COVID CAMPUS')
+    types = models.CharField(max_length=10)
     technology = models.CharField(max_length=500)
-    type = models.CharField(blank=True,
-    options = types.choices, max_length=10)
+    type = models.CharField(blank=True, options = types.choices, max_length=10)
     def __str__(self):
         return self.technology
 
@@ -47,4 +44,3 @@ class Health(models.Model):
     information = models.CharField(max_length=500)
     def __str__(self):
         return self.information
-
