@@ -27,7 +27,6 @@ class Policies(models.Model):
 class Technologies(models.Model):
     types = models.CharField(max_length=10)
     technology = models.CharField(max_length=500)
-    type = models.CharField(blank=True, options = types.choices, max_length=10)
     def __str__(self):
         return self.technology
 
