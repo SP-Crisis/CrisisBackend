@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'djoser',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,33 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'accounts.UserAccount'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
+}
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'SEND_CONFIRMATION_EMAIL': True,
+    'SET_USERNAME_RETYPE': True,
+    'SET_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_URL': '/password/reset/confirm/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'USERNAME_RESET_CONFIRM_URL': '/email/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '/activate/{uid}/{token}',
+    'SERIALIZERS': {
+        'user_create': 'accounts.serializers.UserCreateSerializer',
+        'user': 'djoser.serializers.UserCreateSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
+    }
+    }
