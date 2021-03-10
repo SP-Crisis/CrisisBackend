@@ -156,4 +156,4 @@ DJOSER = {
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
     }
     }
-django_heroku.settings(locales())
+django_heroku.settings(locals())
