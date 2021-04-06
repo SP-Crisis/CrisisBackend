@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&kdx&y0bfsbg)2*va97yyvg#irs=+00^pn2r-=&bqoafb2#_2%'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -114,6 +114,7 @@ USE_TZ = True
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
+    'https://crisismanagmentsystem.herokuapp.com',
 )
 
 
