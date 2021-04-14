@@ -99,6 +99,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT: 587
+EMAIL_HOST_USER = 'gilyard_jalen@columbusstate.edu'
+EMAIL_HOST_PASSWORD = 'ierwzsshgjhlozla'
+EMAIL_USE_TLS = True
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -114,7 +121,7 @@ USE_TZ = True
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-    'https://crisismanagmentsystem.herokuapp.com/forum',
+    'https://crisismanagmentsystem.herokuapp.com',
 )
 
 
@@ -162,3 +169,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
+
+
