@@ -1,9 +1,11 @@
 from django.db import models
 import datetime
+from accounts.models import UserAccount
 
 # Create your models here.
 
 class Question(models.Model):
+    owner = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     date = models.DateTimeField('Date Asked')
     rank = models.IntegerField(default=0)
     question = models.CharField(max_length=500)
