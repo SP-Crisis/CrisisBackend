@@ -13,6 +13,20 @@ class UserAccountManager(BaseUserManager):
 
         return user
 
+    def create_super_user(self, email, name, password):
+        if password is None: 
+            raise ValueError("Password must be defined.")
+        if email is None: 
+            raise ValueError("Email must be defined.")
+
+        user = self.create_user(email, name, password)
+        user.is_superuser = True
+        user.is_staff= True
+
+        user.save()
+
+        return user
+
 class UserAccount(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
@@ -24,6 +38,10 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
 
+    def tokens(self):
+        return ''
+
+    
     def get_full_name(self):
         return self.name
 
